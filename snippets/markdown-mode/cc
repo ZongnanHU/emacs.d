@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Note Name
+# key: cc
+# --
+[$0]`(format-time-string "(%Y-%m-%dT%H%M.markdown)")`
