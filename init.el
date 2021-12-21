@@ -13,10 +13,6 @@
 (setq default-directory user-emacs-directory)
 
 
-;; 设置一些命令的快捷方式。
-(defalias 'rc 'revert-buffer-with-coding-system)
-
-
 ;; 显示行号。
 (when (fboundp 'display-line-numbers-mode)
   (setq-default display-line-numbers-width 3)
@@ -473,6 +469,17 @@
 (use-package csv-mode)
 
 
+;; 设置一些命令的快捷方式。
+(defalias 'rc 'revert-buffer-with-coding-system)
+(defalias 'sc 'set-buffer-file-coding-system)
+(defalias 'wl 'evil-window-move-far-right)
+(defalias 'wh 'evil-window-move-far-left)
+(defalias 'wk 'evil-window-move-very-top)
+(defalias 'wj 'evil-window-move-very-bottom)
+(defalias 'Jl 'crux-top-join-line)
+(defalias 'jl 'join-line)
+
+
 ;; 快捷键设置
 (require 'general)
 
@@ -488,14 +495,6 @@
  "s r" 'counsel-rg
  "f f" 'find-file-in-project-by-selected
  "b b" (lambda () (interactive) (switch-to-buffer nil))
- "w v" 'evil-window-vsplit
- "w s" 'evil-window-split
- "w h" 'evil-window-left
- "w l" 'evil-window-right
- "w k" 'evil-window-up
- "w j" 'evil-window-down
- "w o" 'delete-other-windows
- "w c" 'evil-window-delete
  ;; 快速选中内容。
  "e" 'er/expand-region
  ;; 操作括号。
@@ -505,6 +504,8 @@
  "p r" 'sp-raise-sexp
  "n w" 'widen
  "n n" 'narrow-to-region
+ "D" 'crux-delete-file-and-buffer
+ "R" 'crux-rename-file-and-buffer
  "j" 'avy-goto-char
  "v" 'set-mark-command
  "u" 'undo-tree-undo
