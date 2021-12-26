@@ -30,6 +30,10 @@
 (blink-cursor-mode 0)
 
 
+;; 自动更新文件的修改
+(global-auto-revert-mode 1)
+
+
 ;; 设置系统时间为英文格式，避免 org mode 在插入时间的时候产生乱码。
 (setq system-time-locale "C")
 
