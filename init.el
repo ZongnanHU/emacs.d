@@ -491,7 +491,6 @@
  "M-o" 'other-window
  "C-x C-r" 'crux-recentf-find-file)
 
-(global-set-key (kbd "C-m") 'set-mark-command)
 
 (global-unset-key (kbd "M-e"))
 
