@@ -480,8 +480,7 @@
 (defalias 'wh 'evil-window-move-far-left)
 (defalias 'wk 'evil-window-move-very-top)
 (defalias 'wj 'evil-window-move-very-bottom)
-(defalias 'Jl 'crux-top-join-line)
-(defalias 'jl 'join-line)
+(defalias 'top-join-line 'crux-top-join-line)
 
 
 ;; 快捷键设置
@@ -489,6 +488,7 @@
 
 (general-define-key
  "M-o" 'other-window
+ "C-o" 'crux-smart-open-line
  "C-x C-r" 'crux-recentf-find-file)
 
 
