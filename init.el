@@ -496,6 +496,9 @@
 
 (general-define-key
  :prefix "M-e"
+ "M-e" 'forward-sentence
+ "a" 'backward-sentence
+ ;; 快速搜索
  "s s" 'swiper
  "s i" 'imenu
  "s r" 'counsel-rg
@@ -512,7 +515,7 @@
  "n n" 'narrow-to-region
  "D" 'crux-delete-file-and-buffer
  "R" 'crux-rename-file-and-buffer
- "j" 'avy-goto-char
+ "j" 'avy-goto-subword-1
  "v" 'set-mark-command
  "u" 'undo-tree-undo
  "r" 'undo-tree-redo
