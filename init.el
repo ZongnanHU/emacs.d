@@ -4,6 +4,13 @@
 ;;; Code:
 
 
+;; 载入工具函数
+(setq xy_utility-file
+      (expand-file-name "utility.el" user-emacs-directory))
+(when (file-exists-p xy_utility-file)
+  (load xy_utility-file))
+
+
 ;; 统一实用使用 unix 风格的换行与 utf 编码。
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8-unix)
