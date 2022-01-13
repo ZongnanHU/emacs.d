@@ -95,17 +95,6 @@
        mouse-drag-and-drop-region-cut-when-buffers-differ t)
 
 
-;; 分别设置中英文字体。Emacs 默认的中文字体不仅丑陋，还会让 Emacs 卡顿。
-;; 设置中文和英文不同的缩放率可以让 Org Mode 的表格对齐。10 号字体舒服。
-(when window-system
-  (set-face-attribute 'default nil :font "MesloLGM NF 9")
-  (dolist (charset '(kana han cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font) charset
-                      (font-spec :family "Noto Serif CJK SC")))
-  (setq face-font-rescale-alist '(("MesloLGM NF" . 1)
-                                  ("Noto Serif CJK SC" . 1.2))))
-
-
 ;; 保留最近打开文件的信息。
 (require 'recentf)
 (add-to-list 'recentf-exclude "recentf")

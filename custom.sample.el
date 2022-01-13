@@ -1,21 +1,38 @@
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(counsel-rg-base-command
-   '("D:/opt/emacs-27.2-x86_64/bin/rg.exe" "--max-columns" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s" "--path-separator" "/" "."))
- '(hes-mode t)
- '(package-selected-packages
-   '(pyim edit-indirect ag evil-matchit evil-surround csv-mode citre maxima yard-mode robe ruby-compilation inf-ruby rspec-mode ruby-hash-syntax sml-mode yasnippet-snippets magit highlight-parentheses spaceline imenu-list anzu geiser-racket geiser exec-path-from-shell js-comint js2-mode elpy slime super-save workgroups2 find-file-in-project smex easy-kill switch-window whitespace-cleanup-mode which-key use-package undo-tree smartparens rainbow-mode olivetti multiple-cursors markdown-mode ivy-rich highlight-escape-sequences general flycheck-color-mode-line expand-region evil ess diminish deft crux counsel company-quickhelp color-theme-sanityinc-tomorrow beacon avy auctex))
- '(znh/notes_box "d:/org/org.xy.notes_box/notes/"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; 本文件保存的是一些需要依据不同系统进行调整的设置
 
 (pyvenv-activate "d:/opt/pyvenv/dev/")
 
+
+;; 分别设置中英文字体。Emacs 默认的中文字体不仅丑陋，还会让 Emacs 卡顿。
+;; 设置中文和英文不同的缩放率可以让 Org Mode 的表格对齐。10 号字体舒服。
+(when window-system
+  (set-face-attribute 'default nil :font "MesloLGM NF 9")
+  (dolist (charset '(kana han cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font) charset
+                      (font-spec :family "Noto Sans CJK SC Regular")))
+  (setq face-font-rescale-alist '(("MesloLGM NF" . 1)
+                                  ("Noto Sans CJK SC Regular" . 1.2))))
+
+
+;; 手动设置一些程序的路径，尤其在 Windows 路径下
+(setq diff-command "D:/opt/Git/usr/bin/diff3.exe")
+(setq ediff-diff-program "D:/opt/Git/usr/bin/diff.exe")
+(setq ediff-diff3-program "D:/opt/Git/usr/bin/diff3.exe")
 (setq ffip-find-executable "d:/opt/emacs-27.2-x86_64/bin/fd.exe")
+
+
+;; 默认激活的 Python 环境
+(pyvenv-activate "d:/opt/pyvenv/dev/")
+
+
+;; 笔记所在路径
+(setq znh/notes_box "d:/org/org.xy.notes_box/notes/")
+
+
+;; sqlite3 的设置
+(setq sql-sqlite-options '("-interactive"))
+
+
+;; 配置样式
+(custom-set-faces
+ '(fixed-pitch ((t (:family "MesloLGM NF")))))
