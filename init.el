@@ -369,6 +369,7 @@
   (setq auto-save-default nil)
   (setq super-save-auto-save-when-idle t)
   (setq super-save-idle-duration 60)
+  (add-to-list 'super-save-triggers 'next-line)
   (super-save-mode +1))
 
 
