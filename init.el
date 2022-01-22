@@ -460,12 +460,7 @@
 
 (use-package citre
   :init
-  (require 'citre-config)
-  (global-set-key (kbd "C-c c j") 'citre-jump)
-  (global-set-key (kbd "C-c c J") 'citre-jump-back)
-  (global-set-key (kbd "C-c c p") 'citre-ace-peek)
-  (global-set-key (kbd "C-c c .") 'citre-peek)
-  (global-set-key (kbd "C-c c u") 'citre-update-this-tags-file))
+  (require 'citre-config))
 
 (use-package csv-mode)
 
@@ -503,6 +498,12 @@
  "b b" (lambda () (interactive) (switch-to-buffer nil))
  ;; 快速选中内容。
  "e" 'er/expand-region
+ ;; citre 相关快捷键
+ "c j" 'citre-jump
+ "c J" 'citre-jump-back
+ "c p" 'citre-ace-peek
+ "c ." 'citre-peek
+ "c u" 'citre-update-this-tags-file
  ;; 操作括号。
  "p f" 'sp-forward-slurp-sexp
  "p b" 'sp-forward-barf-sexp
