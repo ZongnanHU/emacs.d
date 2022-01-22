@@ -105,6 +105,17 @@
 (run-at-time nil (* 5 60) 'recentf-save-list)
 
 
+;; 启用 org mode 做日常任务管理与速记
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
+
+(setq org-todo-keywords
+      '((type "REFINE(r)" "DELEGATED(s)" "TODO(t)" "|" "DONE(d)" )))
+(setq org-enforce-todo-dependencies t) ;; 使得任务之间彼此依赖
+(setq org-log-into-drawer t) ;; 将任务日记放在 drawer 里
+
+
 ;; 配置软件包安装。
 (require 'package)
 
@@ -254,6 +265,8 @@
   (add-hook 'markdown-mode-hook
             #'olivetti-mode)
   (add-hook 'LaTeX-mode-hook
+            #'olivetti-mode)
+  (add-hook 'org-mode-hook
             #'olivetti-mode)
   (add-hook 'LaTeX-mode-hook
             (lambda()
