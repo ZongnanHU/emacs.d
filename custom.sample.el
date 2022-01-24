@@ -30,6 +30,54 @@
 
 ;; 配置 org mode 的默认笔记
 (setq znh/notes_box "d:/org/org.xy.notes_box/notes/")
+(setq znh/notes_box_html "d:/org/org.xy.notes_box/_html/")
+(setq org-publish-project-alist
+      `(("note"
+         :base-directory ,znh/notes_box
+         :base-extension "org"
+         :publishing-directory ,znh/notes_box_html
+         :publishing-function org-html-publish-to-html
+         :html-doctype "html5"
+         :headline-levels 3
+         :section-numbers nil
+         :with-toc nil
+         :html-mathjax-options
+         ((path "./assets/MathJax-2.7.8/MathJax.js?config=TeX-AMS_HTML")
+          (scale "100")
+          (align "center")
+          (font "TeX")
+          (linebreaks "false")
+          (autonumber "AMS")
+          (indent "0em")
+          (multlinewidth "85%")
+          (tagindent ".8em")
+          (tagside "right"))
+         :auto-sitemap t
+         :html-preamble-format
+         (("en"
+           ,(concat
+             "<h1 id=\"site-title\">Notes-Box</h1>"
+             "<link rel=\"stylesheet\" "
+             "href=\"./assets/style.css\" type=\"text/css\"/>"
+             "<div id=\"nav\">"
+             "  <a href=\"./index.html\">Index</a> \|"
+             "  <a href=\"./draft.html\">Draft</a> \|"
+             "  <a href=\"./sitemap.html\">Sitemap</a> \|"
+             "</div>")))
+         :html-postamble-format
+         (("en"
+           ,(concat "<div id=\"footer\">Created by <b>Zongnan HU</b> "
+                    "with GNU Emacs and Org Mode</div>")))
+         :html-preamble t
+         :html-postamble t)
+        ("assets"
+         :base-directory  ,(expand-file-name "assets/" znh/notes_box)
+         :base-extension "jpg\\|gif\\|png\\|css"
+         :publishing-directory ,(expand-file-name "assets"
+                                                  znh/notes_box_html)
+         :publishing-function org-publish-attachment)
+        ("note_box" :components ("note" "assets"))))
+
 (setq znh/draft_file (concat znh/notes_box "draft.org"))
 (setq org-default-notes-file znh/draft_file)
 (setq znh/journal_file (concat znh/notes_box "journal.org"))
