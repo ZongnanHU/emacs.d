@@ -111,7 +111,8 @@
 (global-set-key (kbd "C-c c") #'org-capture)
 
 (setq org-todo-keywords
-      '((type "REFINE(r)" "DELEGATED(s)" "TODO(t)" "|" "DONE(d)" )))
+      '((type "REFINE(r)" "DELEGATED(e)" "TODO(t)"
+              "|" "DONE(d)" "SUSPEND(s)" )))
 (setq org-enforce-todo-dependencies t) ;; 使得任务之间彼此依赖
 (setq org-log-into-drawer t) ;; 将任务日记放在 drawer 里
 (setq org-log-done 'time) ;; 记录任务完成的时间
