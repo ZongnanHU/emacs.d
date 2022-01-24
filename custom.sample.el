@@ -52,6 +52,7 @@
           (multlinewidth "85%")
           (tagindent ".8em")
           (tagside "right"))
+         :sitemap-title "SiteMap"
          :auto-sitemap t
          :html-preamble-format
          (("en"
