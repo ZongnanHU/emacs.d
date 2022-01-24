@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cc
+# key: cc
+# --
+[`(format-time-string "[file:%Y-%m-%dT%H%M.org]")`[$0]]
