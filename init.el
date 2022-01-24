@@ -114,7 +114,7 @@
       '((type "REFINE(r)" "DELEGATED(s)" "TODO(t)" "|" "DONE(d)" )))
 (setq org-enforce-todo-dependencies t) ;; 使得任务之间彼此依赖
 (setq org-log-into-drawer t) ;; 将任务日记放在 drawer 里
-
+(setq org-log-done 'time) ;; 记录任务完成的时间
 
 ;; 配置软件包安装。
 (require 'package)
