@@ -29,30 +29,23 @@
 (setq znh/notes_box "d:/org/org.xy.notes_box/notes/")
 
 ;; 配置 org mode 的默认笔记
-(setq org-default-notes-file (concat znh/notes_box "draft.org"))
-(setq org-agenda-files `(,org-default-notes-file))
+(setq znh/notes_box "d:/org/org.xy.notes_box/notes/")
+(setq znh/draft_file (concat znh/notes_box "draft.org"))
+(setq org-default-notes-file znh/draft_file)
+(setq znh/journal_file (concat znh/notes_box "journal.org"))
+(setq znh/task_file (concat znh/notes_box "task.org"))
+(setq org-agenda-files `(,znh/task_file))
 (setq org-capture-templates
-      `(("t" "Todo" entry (file+olp
-                           ,org-default-notes-file
-                           "Task" "Inbox")
-         "* TODO %?\n  %i")
-        ("T" "Todo with link" entry (file+olp
-                                     ,org-default-notes-file
-                                     "Task" "Inbox")
-         "* TODO %?\n  %i\n  %a")
-        ("n" "Note" entry (file+olp
-                           ,org-default-notes-file
-                           "Note")
-         "* %U\n %i\n %?")
-        ("N" "Note with link" entry (file+olp
-                           ,org-default-notes-file
-                           "Note")
-         "* %U\n %a\n %i\n %?")
-        ("j" "Journal" entry (file+olp
-                              ,org-default-notes-file
-                              "Journal")
-         "* %u\n %?")))
-
+      `(("t" "Todo" entry (file+olp ,znh/task_file "Inbox")
+         "* TODO %?\n  %i\n")
+        ("T" "Todo with link" entry (file+olp ,znh/task_file "Inbox")
+         "* TODO %?\n  %i\n  %a\n")
+        ("n" "Note" entry (file+olp ,znh/draft_file "Inbox")
+         "* %U\n %i\n %?\n")
+        ("N" "Note with link" entry (file+olp ,znh/draft_file "Inbox")
+         "* %U\n %a\n %i\n %?\n")
+        ("j" "Journal" entry (file ,znh/journal_file)
+         "* %u\n %?\n")))
 
 ;; sqlite3 的设置
 (setq sql-sqlite-options '("-interactive"))
