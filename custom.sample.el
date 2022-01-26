@@ -41,8 +41,9 @@
          :headline-levels 3
          :section-numbers nil
          :with-toc nil
+         :language "zh_CN"
          :html-mathjax-options
-         ((path "./assets/MathJax-2.7.8/MathJax.js?config=TeX-AMS_HTML")
+         ((path "./MathJax-2.7.8/MathJax.js?config=TeX-AMS_HTML")
           (scale "100")
           (align "center")
           (font "TeX")
@@ -52,10 +53,10 @@
           (multlinewidth "85%")
           (tagindent ".8em")
           (tagside "right"))
-         :sitemap-title "SiteMap"
          :auto-sitemap t
+         :sitemap-title "SiteMap"
          :html-preamble-format
-         (("en"
+         (("zh_CN"
            ,(concat
              "<h1 id=\"site-title\">Notes-Box</h1>"
              "<link rel=\"stylesheet\" "
@@ -63,10 +64,11 @@
              "<div id=\"nav\">"
              "  <a href=\"./index.html\">Index</a> \|"
              "  <a href=\"./draft.html\">Draft</a> \|"
+             "  <a href=\"./journal.html\">Journal</a> \|"
              "  <a href=\"./sitemap.html\">Sitemap</a> \|"
              "</div>")))
          :html-postamble-format
-         (("en"
+         (("zh_CN"
            ,(concat "<div id=\"footer\">Created by <b>Zongnan HU</b> "
                     "with GNU Emacs and Org Mode</div>")))
          :html-preamble t
@@ -82,12 +84,19 @@
 (setq znh/draft_file (concat znh/notes_box "draft.org"))
 (setq org-default-notes-file znh/draft_file)
 (setq znh/journal_file (concat znh/notes_box "journal.org"))
-(setq znh/task_file (concat znh/notes_box "task.org"))
-(setq org-agenda-files `(,znh/task_file))
+
+(setq znh/tasks "d:/org/org.xy.notes_box/tasks/")
+(setq znh/task_file (concat znh/tasks "task.org"))
+(setq org-agenda-files `(,znh/task_file
+                         ,(expand-file-name "routine.org" znh/tasks)
+                         ,(expand-file-name "reading.org" znh/tasks)
+                         ,(expand-file-name "project.org" znh/tasks)
+                         ,(expand-file-name "learning.org" znh/tasks)))
+
 (setq org-capture-templates
-      `(("t" "Todo" entry (file+olp ,znh/task_file "Inbox")
+      `(("t" "Todo" entry (file ,znh/task_file)
          "* TODO %?\n  %i\n")
-        ("T" "Todo with link" entry (file+olp ,znh/task_file "Inbox")
+        ("T" "Todo with link" entry (file ,znh/task_file)
          "* TODO %?\n  %i\n  %a\n")
         ("n" "Note" entry (file+olp ,znh/draft_file "Inbox")
          "* %U\n %i\n %?\n")
@@ -95,6 +104,7 @@
          "* %U\n %a\n %i\n %?\n")
         ("j" "Journal" entry (file ,znh/journal_file)
          "* %u\n %?\n")))
+
 
 ;; sqlite3 的设置
 (setq sql-sqlite-options '("-interactive"))
