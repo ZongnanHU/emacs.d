@@ -301,7 +301,7 @@
     (interactive)
     (let* ((notes (directory-files
                    znh/notes_box nil
-                   "^[0-9]\\{4\\}.*\.markdown$"))
+                   "^[0-9]\\{4\\}.*\.org$"))
            (nums (length notes))
            (ind (random nums)))
       (find-file (expand-file-name (nth ind notes) znh/notes_box))))
