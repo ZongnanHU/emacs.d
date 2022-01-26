@@ -27,9 +27,6 @@
 
 ;; 笔记所在路径
 (setq znh/notes_box "d:/org/org.xy.notes_box/notes/")
-
-;; 配置 org mode 的默认笔记
-(setq znh/notes_box "d:/org/org.xy.notes_box/notes/")
 (setq znh/notes_box_html "d:/org/org.xy.notes_box/_html/")
 (setq org-publish-project-alist
       `(("note"
@@ -54,6 +51,8 @@
           (tagindent ".8em")
           (tagside "right"))
          :auto-sitemap t
+         :sitemap-sort-files anti-chronologically
+         :sitemap-file-entry-format "%d%t"
          :sitemap-title "SiteMap"
          :html-preamble-format
          (("zh_CN"
@@ -81,6 +80,7 @@
          :publishing-function org-publish-attachment)
         ("note_box" :components ("note" "assets"))))
 
+
 (setq znh/draft_file (concat znh/notes_box "draft.org"))
 (setq org-default-notes-file znh/draft_file)
 (setq znh/journal_file (concat znh/notes_box "journal.org"))
@@ -93,17 +93,29 @@
                          ,(expand-file-name "project.org" znh/tasks)
                          ,(expand-file-name "learning.org" znh/tasks)))
 
+
 (setq org-capture-templates
       `(("t" "Todo" entry (file ,znh/task_file)
-         "* TODO %?\n  %i\n")
+         "* TODO %? \n  SCHEDULED: %t\n  %i\n"
+         :empty-lines 1)
         ("T" "Todo with link" entry (file ,znh/task_file)
-         "* TODO %?\n  %i\n  %a\n")
+         "* TODO %? \n  SCHEDULED: %t\n  %i\n  %a\n"
+         :empty-lines 1)
         ("n" "Note" entry (file+olp ,znh/draft_file "Inbox")
-         "* %U\n %i\n %?\n")
+         "* %U\n %i\n %?\n"
+         :empty-lines 1)
         ("N" "Note with link" entry (file+olp ,znh/draft_file "Inbox")
-         "* %U\n %a\n %i\n %?\n")
+         "* %U\n %a\n %i\n %?\n"
+         :empty-lines 1)
         ("j" "Journal" entry (file ,znh/journal_file)
-         "* %u\n %?\n")))
+         "* %u\n %?\n"
+         :empty-lines 1)))
+
+
+(add-to-list 'recentf-exclude
+             (concat znh/notes_box "[0-9]\\{4\\}.*\.org$"))
+(add-to-list 'recentf-exclude
+             (concat znh/notes_box_html "[0-9]\\{4\\}.*\.html$" ))
 
 
 ;; sqlite3 的设置
