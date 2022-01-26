@@ -151,6 +151,7 @@
 
 
 ;; 配置 use-package
+(setq use-package-enable-imenu-support t) ;; 让 imenu 支持 use-package
 (eval-when-compile
   (require 'use-package))
 (require 'diminish)                ;; 使用 :diminish
@@ -480,6 +481,11 @@
 (use-package csv-mode)
 
 
+(use-package imenu-list
+  :init
+  (setq imenu-list-focus-after-activation t) ;; 启动后自动跳转到 imenu
+  (setq imenu-list-position 'left))
+
 ;; 设置一些命令的快捷方式。
 (defalias 'rc 'revert-buffer-with-coding-system)
 (defalias 'sc 'set-buffer-file-coding-system)
@@ -511,6 +517,7 @@
  "s r" 'counsel-rg
  "f f" 'find-file-in-project-by-selected
  "b b" (lambda () (interactive) (switch-to-buffer nil))
+ "'" 'imenu-list-smart-toggle
  ;; 快速选中内容。
  "e" 'er/expand-region
  ;; citre 相关快捷键
