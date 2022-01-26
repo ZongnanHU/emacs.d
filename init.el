@@ -117,6 +117,9 @@
 (setq org-log-into-drawer t) ;; 将任务日记放在 drawer 里
 (setq org-log-done 'time) ;; 记录任务完成的时间
 (setq org-agenda-span 'day) ;; 默认查看当天的任务
+(setq org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-deadline-if-done t) ;; agenda 不显示已完成工作
+
 
 ;; 配置软件包安装。
 (require 'package)
