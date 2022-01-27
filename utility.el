@@ -47,7 +47,7 @@ This command can be called when in a file buffer or in `dired'.
 URL `http://xahlee.info/emacs/emacs/emacs_dired_open_file_in_ext_apps.html'
 Version 2020-11-20 2021-01-18"
   (interactive)
-  (let (($path (if (buffer-file-name) (file-name-directory ) (buffer-file-name) default-directory)))
+  (let (($path (if (buffer-file-name) (file-name-directory (buffer-file-name)) default-directory)))
     (cond
      ((string-equal system-type "windows-nt")
       (shell-command (format "PowerShell -Command Start-Process Explorer -FilePath %s" (shell-quote-argument default-directory)))
