@@ -85,22 +85,16 @@
 (setq org-default-notes-file znh/draft_file)
 (setq znh/journal_file (concat znh/notes_box "journal.org"))
 
-(setq znh/tasks "d:/org/org.xy.notes_box/tasks/")
-(setq znh/task_file (concat znh/tasks "task.org"))
-(setq org-agenda-files `(,znh/task_file
-                         ,(expand-file-name "routine.org" znh/tasks)
-                         ,(expand-file-name "reading.org" znh/tasks)
-                         ,(expand-file-name "project.org" znh/tasks)
-                         ,(expand-file-name "learning.org" znh/tasks)))
+
+(setq znh/task_file (concat znh/notes_box "task.org"))
+(setq org-agenda-files `(,znh/task_file))
 
 
 (setq org-capture-templates
       `(("t" "Todo" entry (file ,znh/task_file)
-         "* TODO %? \n  SCHEDULED: %t\n  %i\n"
-         :empty-lines 1)
+         "* %? \n %i\n")
         ("T" "Todo with link" entry (file ,znh/task_file)
-         "* TODO %? \n  SCHEDULED: %t\n  %i\n  %a\n"
-         :empty-lines 1)
+         "* %? \n %i\n  %a\n")
         ("n" "Note" entry (file+olp ,znh/draft_file "Inbox")
          "* %U\n %i\n %?\n"
          :empty-lines 1)
