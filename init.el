@@ -150,7 +150,8 @@
       '(color-theme-sanityinc-tomorrow
         use-package bind-key diminish
         undo-tree rainbow-mode expand-region crux general
-        multiple-cursors swiper avy smex find-file-in-project))
+        multiple-cursors swiper avy smex find-file-in-project
+        magit))
 
 
 ;; 配置 use-package
