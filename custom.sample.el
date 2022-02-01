@@ -27,7 +27,11 @@
 
 ;; 笔记所在路径
 (setq znh/notes_box_root "d:/o/o.xy.workspace/note.box/")
-(load (expand-file-name "note_box.el" znh/notes_box_root))
+(setq znh/notes_box_el (expand-file-name
+                        "note_box.el" znh/notes_box_root))
+
+(when (file-exists-p znh/notes_box_el)
+  (load znh/notes_box_el))
 
 
 ;; sqlite3 的设置
