@@ -338,7 +338,7 @@
   :diminish
   :init
   (require 'smartparens-config)
-  (smartparens-global-strict-mode))
+  (add-hook 'prog-mode-hook #'smartparens-mode))
 
 
 (use-package highlight-escape-sequences
