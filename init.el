@@ -118,6 +118,19 @@
       org-agenda-skip-deadline-if-done t) ;; agenda 不显示已完成工作
 
 
+;; 支持导出中文 PDF
+(with-eval-after-load 'ox-latex
+  (add-to-list 'org-latex-classes
+               '("ctexart"
+                 "\\documentclass[UTF8]{ctexart}"
+                 ("\\section{%s}" . "\\section*{%s}")
+                 ("\\subsection{%s}" . "\\subsection*{%s}")
+                 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  (setq org-latex-default-class "ctexart")
+  (setq org-latex-compiler "xelatex"))
+
 ;; 配置软件包安装。
 (require 'package)
 
